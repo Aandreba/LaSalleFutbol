@@ -2,10 +2,23 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
 
+/**
+ * A class containing basic person information
+ * @author Alex Andreba
+ * @version 1.0
+ */
 public class Person {
     final public String firstName, lastName, dni;
     final public LocalDate birthDate;
 
+    /**
+     * {@link Person} base constructor
+     * @param firstName Person's first name
+     * @param lastName Person's last name
+     * @param dni Person's National Identity Document
+     * @param birthDate Person's birth date
+     * @throws InvalidDNIException if the dni passed is invalid
+     */
     public Person (String firstName, String lastName, String dni, LocalDate birthDate) throws InvalidDNIException {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,15 +31,27 @@ public class Person {
         this.dni = dni;
     }
 
-    // METHODS
+    /**
+     * Retrieves the full name of the person
+     * @return The person's full name
+     */
     public String getFullName () {
         return this.firstName + ' ' + this.lastName;
     }
 
+    /**
+     * Calculates person's age
+     * @return Distance between {@link Person#birthDate} and {@link LocalDate#now()}
+     * @see Period#between(LocalDate, LocalDate)
+     */
     public Period getAge () {
         return Period.between(this.birthDate, LocalDate.now());
     }
 
+    /**
+     * Calculates person's age in years
+     * @return Year distance between {@link Person#birthDate} and {@link LocalDate#now()}
+     */
     public int getYears () {
         return getAge().getYears();
     }
@@ -51,6 +76,11 @@ public class Person {
             'c', 'k', 'e'
     };
 
+    /**
+     * Checks if passed dni is valid
+     * @param dni DNI to check
+     * @return {@link Boolean#TRUE} if DNI is valie, {@link Boolean#FALSE} otherwise
+     */
     private static boolean checkDni (String dni) {
         if (dni.length() != 9) {
             return false;
