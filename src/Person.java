@@ -10,25 +10,35 @@ import java.util.Date;
 public class Person {
     final public String firstName, lastName, dni;
     final public LocalDate birthDate;
+    final public boolean gender;
+    private int salary;
 
     /**
      * {@link Person} base constructor
      * @param firstName Person's first name
      * @param lastName Person's last name
      * @param dni Person's National Identity Document
-     * @param birthDate Person's birth date
+     * @param birthDate Person's birthdate
+     * @param gender Person's gender
+     * @param salary Annual salary in euros
      * @throws InvalidDNIException if the dni passed is invalid
      */
-    public Person (String firstName, String lastName, String dni, LocalDate birthDate) throws InvalidDNIException {
+    public Person (String firstName, String lastName, String dni, LocalDate birthDate, boolean gender, int salary) throws InvalidDNIException {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+        this.gender = gender;
+        this.salary = salary;
 
         if (!checkDni(dni)) {
             throw new InvalidDNIException(dni);
         }
 
         this.dni = dni;
+    }
+
+    public int getSalary () {
+        return salary;
     }
 
     /**
