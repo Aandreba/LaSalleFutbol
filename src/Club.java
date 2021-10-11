@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Club {
-    private String name;
-    private String acronym;
-    private Person director;
-    private String country;
-    private String region;
-    private String city;
-    private HashMap<String, Team> teams = new HashMap<>();
+    private final String name;
+    private final String acronym;
+    private final Person director;
+    private final String country;
+    private final String region;
+    private final String city;
+    private final HashMap<String, Team> teams = new HashMap<>();
 
     /**
      * Creates a club with given attributes.
