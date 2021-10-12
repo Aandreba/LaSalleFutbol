@@ -1,49 +1,104 @@
+import javax.swing.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+/**
+ * A class containing basic Game information
+ * @author Miquel Lopez
+ * @version 1.0
+ */
 public class Game {
-    final public Team TEAMA;
-    private int teamAGoals;
-    final public Team TEAMB;
-    private int teamBGoals;
-    final public Referee REFEREE;
-    private String winner;
-    private ArrayList<Person> numberSpectators;
+    final public ArrayList<Action> actions;
+    final public LocalDateTime starts;
+    private LocalDateTime ends;
+    private Stadium stadium;
+    final public Team teamA;
+    final public Team teamB;
+    final Team winner;
+    private int spectators;
 
     /**
-     * Constructor
-     * @param teamA Local team
-     * @param teamB Visitor team
-     * @param referee Name of referee
-     * @param numberSpectators Number of spectators
+     * {@link Game} base constructor
+     * @param actions action's sets
+     * @param starts date of game starts
+     * @param ends date of game ends
+     * @param stadium stadium's name
+     * @param teamA local team's name
+     * @param teamB visitor team's name
+     * @param spectators spectator's number
      */
-    public Game(Team teamA, Team teamB, Referee referee, ArrayList<Person> numberSpectators) {
-        this.TEAMA = teamA;
-        this.teamAGoals = 0;
-        this.TEAMB = teamB;
-        this.teamBGoals = 0;
-        this.REFEREE = referee;
-        this.numberSpectators = numberSpectators;
+    public Game(ArrayList<Action> actions, LocalDateTime starts, LocalDateTime ends, Stadium stadium, Team teamA, Team teamB, int spectators) {
+        this.actions = actions;
+        this.starts = starts;
+        this.ends = ends;
+        this.stadium = stadium;
+        this.teamA = teamA;
+        this.teamB = teamB;
+        this.winner = null;
+        this.spectators = spectators;
     }
 
-    /*public int doGoal(Team team){
-        if (){
-            return this.temAGoals++;
-        } else {
-            return this.temBGoals++;
-        }
-    }*/
-
+    /**
+     *Retrieves action's sets of game
+     * @return action's sets
+     */
+    public ArrayList<Action> getActions() {
+        return actions;
+    }
 
     /**
-     * Compare goals of two team, and select winner
+     * Retrieve the start date of game
+     * @return start date
      */
-    public void whoWin(){
-        if(teamAGoals == teamBGoals){
-            this.winner = "Draw";
-        } else if(teamAGoals > teamBGoals){
-            this.winner = "Team A win";
-        } else {
-            this.winner = "Team B win";
-        }
+    public LocalDateTime getStarts() {
+        return starts;
+    }
+
+    /**
+     * Retrieve the end date of game
+     * @return end date
+     */
+    public LocalDateTime getEnds() {
+        return ends;
+    }
+
+    /**
+     * Retrieve the stadium of game
+     * @return staidum
+     */
+    public Stadium getStadium() {
+        return stadium;
+    }
+
+    /**
+     * Retrieve the local team of game
+     * @return local team
+     */
+    public Team getTeamA() {
+        return teamA;
+    }
+
+    /**
+     * Retrieve the visitor team of game
+     * @return visitor team
+     */
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    /**
+     * Retrieve the winner of game
+     * @return winner
+     */
+    public Team getWinner() {
+        return winner;
+    }
+
+    /**
+     * Retrieve the spectators of game
+     * @return spectators
+     */
+    public int getSpectators() {
+        return spectators;
     }
 }
