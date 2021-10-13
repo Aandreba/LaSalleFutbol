@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Team {
 
-
     private static  Club club;
     private final String name;
     private final String category;
@@ -159,7 +158,6 @@ public class Team {
 
             return a;
         }
-
 
 }
 
