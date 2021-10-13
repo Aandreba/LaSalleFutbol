@@ -1,26 +1,29 @@
-public class Referee  {
+public class Referee extends Person {
 
-    private static char takeDecision;
+    public  int numberOfFoul;
+
 
 
     /**
-     * Method: showingCard
-     * This method is showing the referee decision to the player.
-     * If Referee take decision (Y) it's means Yellow Card and it's a warning.
-     * If he is showing (R) it's means Red Card and it's  a Error.
+     * This Method is to show Warning to the Player.
+     * It indicate that a player has been officially cautioned. But he  may continue the game.
      */
-
-    public static  void showingCard(){
-        if (takeDecision ==  'Y') {
-            System.out.println("WARNING: It's a warning for a Player.");
-        } else if (takeDecision == 'R') {
-            System.out.println("The Player has to go from Game.");
+   public  void giveYellowCard(){
+        if(numberOfFoul <= 1){
+            System.out.println("WARNING: A player can be out of the game. He has to be calm now while playing.");
+            numberOfFoul++;
         }
-    }
+   }
+
+    /**
+     * This Method is to shown by a referee to signify that a player must be sent off.
+     */
+   public  void giveRedCard(){
+        if (numberOfFoul == 2){
+            System.out.println("A player who has been sent off is required to leave the field of play immediately.");
+        }
+   }
 
 
-    public static void setTakeDecision(char takeDecision) {
-        Referee.takeDecision = takeDecision;
-    }
 }
 
