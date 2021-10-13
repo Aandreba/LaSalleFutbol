@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * author: Gerard Marquina Rubio
  */
 public class Action {
-    private final Action actionType;
+    private final ActionType actionType;
     private final LocalDateTime happened;
     private final Object issuer;
     private final ArrayList<Object> receiver;
@@ -18,7 +18,7 @@ public class Action {
      * @param issuer issuer of the action.
      * @param receiver receiver(s) of the action.
      */
-    public Action(Action actionType, LocalDateTime happened, Object issuer, ArrayList<Object> receiver) {
+    public Action(ActionType actionType, LocalDateTime happened, Object issuer, ArrayList<Object> receiver) {
         this.actionType = actionType;
         this.happened = happened;
         this.issuer = issuer;
@@ -29,7 +29,7 @@ public class Action {
      * Get action type as Enum.
      * @return enum action type.
      */
-    public Action getActionType() {
+    public ActionType getActionType() {
         return actionType;
     }
 

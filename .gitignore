@@ -1,0 +1,6 @@
+bin/
+out/
+tests/
+test/
+*.iml
+.idea/

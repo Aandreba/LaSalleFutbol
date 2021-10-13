@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -8,34 +7,28 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class Game {
-    final public ArrayList<Action> actions;
-    final public LocalDateTime starts;
+    public final ArrayList<Action> actions;
+    public final LocalDateTime starts;
     private LocalDateTime ends;
     private Stadium stadium;
-    final public Team teamA;
-    final public Team teamB;
-    final Team winner;
+    public final Team teamA;
+    public final Team teamB;
+    public Team winner;
     private int spectators;
 
     /**
      * {@link Game} base constructor
-     * @param actions action's sets
      * @param starts date of game starts
-     * @param ends date of game ends
      * @param stadium stadium's name
      * @param teamA local team's name
      * @param teamB visitor team's name
-     * @param spectators spectator's number
      */
-    public Game(ArrayList<Action> actions, LocalDateTime starts, LocalDateTime ends, Stadium stadium, Team teamA, Team teamB, int spectators) {
-        this.actions = actions;
+    public Game(LocalDateTime starts, Stadium stadium, Team teamA, Team teamB) {
+        this.actions = new ArrayList<>();
         this.starts = starts;
-        this.ends = ends;
         this.stadium = stadium;
         this.teamA = teamA;
         this.teamB = teamB;
-        this.winner = null;
-        this.spectators = spectators;
     }
 
     /**
@@ -101,4 +94,23 @@ public class Game {
     public int getSpectators() {
         return spectators;
     }
+
+    public static Game startGame(LocalDateTime starts, Stadium stadium, Team teamA, Team teamB) {
+        return new Game(starts, stadium, teamA, teamB);
+    }
+
+    public static Team whoWon(Game game) {
+        int teamApoints = 0;
+        int teamBpoints = 0;
+        for (int i = 0; i < game.actions.size(); i++) {
+            if (game.actions.get(i).getActionType() == ActionType.GOAL) {
+                if (game.actions.get(i).getIssuer().equals(game.teamA)) {
+                    teamApoints++;
+                } else teamBpoints++;
+            }
+        }
+        if (teamApoints == teamBpoints) return null;
+        return (teamApoints > teamBpoints) ? game.teamA : game.teamB;
+    }
+
 }
